@@ -58,21 +58,26 @@ pipeline {
 
         stage('Deploy Backend') {
             steps {
-                sh """
-                    kubectl apply -n $NAMESPACE -f k8s/backend-deployment.yml
-                    kubectl rollout status deployment/backend-deployment -n $NAMESPACE
-                """
-            }
+                withAWS(region:'ap-south-1', credentials:'aws-creds-id') {
+                    sh """
+                kubectl apply -n $NAMESPACE -f k8s/backend-deployment.yml
+                kubectl rollout status deployment/backend-deployment -n $NAMESPACE
+            """
         }
+    }
+}
 
         stage('Deploy Frontend') {
             steps {
-                sh """
-                    kubectl apply -n $NAMESPACE -f k8s/frontend-deployment.yml
-                    kubectl rollout status deployment/frontend-deployment -n $NAMESPACE
-                """
-            }
+                withAWS(region:'ap-south-1', credentials:'aws-creds-id') {
+                    sh """
+                kubectl apply -n $NAMESPACE -f k8s/frontend-deployment.yml
+                kubectl rollout status deployment/frontend-deployment -n $NAMESPACE
+            """
         }
+    }
+}
+
     }
 
 }
