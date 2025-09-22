@@ -59,7 +59,7 @@ pipeline {
         stage('Deploy Backend') {
             steps {
                 sh """
-                    kubectl apply -n $NAMESPACE -f k8s/backend-deployment.yaml
+                    kubectl apply -n $NAMESPACE -f k8s/backend-deployment.yml
                     kubectl rollout status deployment/backend-deployment -n $NAMESPACE
                 """
             }
@@ -68,7 +68,7 @@ pipeline {
         stage('Deploy Frontend') {
             steps {
                 sh """
-                    kubectl apply -n $NAMESPACE -f k8s/frontend-deployment.yaml
+                    kubectl apply -n $NAMESPACE -f k8s/frontend-deployment.yml
                     kubectl rollout status deployment/frontend-deployment -n $NAMESPACE
                 """
             }
