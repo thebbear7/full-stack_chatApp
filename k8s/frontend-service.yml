@@ -4,11 +4,9 @@ metadata:
   name: frontend
   namespace: chat-app
 spec:
+  type: LoadBalancer
   selector:
     app: frontend
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30080
-  type: NodePort
+  - port: 80
+    targetPort: 80

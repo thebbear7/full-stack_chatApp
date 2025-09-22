@@ -23,3 +23,26 @@ dist-ssr
 *.sln
 *.sw?
 
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Terraform plan files
+*.tfplan
+
+# Override files (local tweaks)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration
+.terraformrc
+terraform.rc
+
+# Local .terraform directory with provider plugins
+.terraform/
+
