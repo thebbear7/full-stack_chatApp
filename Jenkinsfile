@@ -47,7 +47,7 @@ pipeline {
 
         stage('Configure kubectl for EKS') {
             steps {
-                withAWS(credentials: 'aws-creds-id', region: 'us-east-1') {
+                withAWS(credentials: 'aws-creds-id', region: 'ap-south-1') {
                     sh """
                 aws eks update-kubeconfig --name chat-cluster
             """
