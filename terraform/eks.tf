@@ -15,7 +15,7 @@ module "eks" {
       before_compute = true
     }
   }
-  #demo2
+  #demo3
   endpoint_public_access = true
 
   enable_cluster_creator_admin_permissions = true
