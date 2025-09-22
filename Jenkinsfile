@@ -31,7 +31,8 @@ pipeline {
         stage('Build & Push Backend Image') {
             steps {
                 sh """
-                    docker buildx build --platform linux/amd64,linux/arm64 -t $BACKEND_IMAGE ./backend --push
+                    docker buildx build --platform linux/amd64 -t mahbeer/chatapp-backend:latest ./backend --push
+
                 """
             }
         }
@@ -39,7 +40,7 @@ pipeline {
         stage('Build & Push Frontend Image') {
             steps {
                 sh """
-                    docker buildx build --platform linux/amd64,linux/arm64 -t $FRONTEND_IMAGE ./frontend --push
+                    docker buildx build --platform linux/amd64 -t $FRONTEND_IMAGE ./frontend --push
                 """
             }
         }
