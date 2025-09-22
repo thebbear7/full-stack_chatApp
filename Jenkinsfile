@@ -49,7 +49,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws-creds-id', region: 'us-east-1') {
                     sh """
-                aws eks update-kubeconfig --name your-eks-cluster-name
+                aws eks update-kubeconfig --name chat-cluster
             """
         }
     }
