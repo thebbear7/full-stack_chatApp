@@ -47,17 +47,14 @@ pipeline {
 
         stage('Configure kubectl for EKS') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'aws-creds-id',
-                    usernameVariable: 'AWS_ACCESS_KEY_ID',
-                    passwordVariable: 'AWS_SECRET_ACCESS_KEY'
-                )]) {
+                withAWS(credentials: 'aws-creds-id', region: 'us-east-1') {
                     sh """
-                        aws eks --region $AWS_REGION update-kubeconfig --name $EKS_CLUSTER
-                    """
-                }
-            }
+                aws eks update-kubeconfig --name your-eks-cluster-name
+            """
         }
+    }
+}
+
 
         stage('Deploy Backend') {
             steps {
