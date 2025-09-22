@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'github-creds', url: 'https://github.com/thebbear7/full-stack_chatApp.git'
+                git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/thebbear7/full-stack_chatApp.git'
             }
         }
 
